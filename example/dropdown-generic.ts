@@ -47,7 +47,6 @@ emails.forEach(function (email) {
   selectTag!.appendChild(item);
 });
 
-// 테스트
 numberOfProducts.forEach(function (product) {
   const item = createDropdownItem<number>(product);
 });
