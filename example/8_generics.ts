@@ -98,3 +98,19 @@ function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T {
 }
 
 getShoppingItemOption("name"); //'price', 'stock'
+
+// Promise와 제네릭
+//  new <T>(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): Promise<T>;
+// Promise는 Promise<T> 리턴값으로 받아야함.
+// Promise callback 함수 매개변수 resolve 값 타입이 Promise<T> << T안에 들어가면됨.
+// 아래 예시는 그럼 item <string[]>이 들어가면 될듯.
+function fetchItems(): Promise<string[]> {
+  let item = ["a", "b", "c"];
+  return new Promise(function (resolve) {
+    resolve(item);
+  });
+}
+
+fetchItems().then(function (data) {
+  console.log("프로미스", data);
+});
